@@ -16,36 +16,38 @@ public class ReverseLinkedList_206 {
 
 
     }
+
     public static ListNode reverseList2(ListNode head) {
-        ListNode pre=null;
-        ListNode cur=head;
-        while(cur!=null){
+        ListNode pre = null;
+        ListNode cur = head;
+        while (cur != null) {
             ListNode next = cur.next;
-            cur.next=pre;
-            pre=cur;
-            cur=next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
 
         }
         return pre;
 
     }
+
     public static ListNode reverseList(ListNode head) {
         ListNode curr = head;
-        Stack<Integer>stack=new Stack<>();
-        while (curr !=null){
+        Stack<Integer> stack = new Stack<>();
+        while (curr != null) {
             stack.push(curr.val);
             curr = curr.next;
         }
         ListNode result = null;
         ListNode temp = null;
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             ListNode listNode = new ListNode(stack.pop());
-            if (result ==null){
-                result=listNode;
-            }else {
+            if (result == null) {
+                result = listNode;
+            } else {
                 temp.next = listNode;
             }
-            temp=listNode;
+            temp = listNode;
 
         }
         return result;
