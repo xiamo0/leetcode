@@ -25,7 +25,6 @@ public class HouseRobber_198 {
         } else if (length == 2) {
             return Math.max(nums[0], nums[1]);
         } else {
-
             int[] sum = new int[length];
             sum[0] = nums[0];
             sum[1] = Math.max(nums[0], nums[1]);
@@ -33,7 +32,7 @@ public class HouseRobber_198 {
                 int sumI = nums[i] + sum[i - 2];
                 sum[i] = Math.max(sumI, sum[i - 1]);
             }
-            
+            return sum[sum.length-1];
         }
 
 
