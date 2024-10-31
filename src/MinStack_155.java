@@ -8,7 +8,6 @@ public class MinStack_155 {
 
     public static void main(String[] args) {
 
-
         MinStack1 minStack = new MinStack1();
         minStack.push(-2);
         minStack.push(0);
@@ -20,20 +19,31 @@ public class MinStack_155 {
         System.out.println(minStack.top());
 
         System.out.println(minStack.getMin());
+        System.out.println(minStack);
 
     }
+
     static class MinStack1 {
 
         private Deque<Integer> cache = new ArrayDeque<>();
 
         private Queue<Integer> min = new PriorityQueue<>();
+
         public MinStack1() {
 
         }
 
+        @Override
+        public String toString() {
+            return "MinStack1{" +
+                    "cache=" + cache +
+                    ", min=" + min +
+                    '}';
+        }
+
         public void push(int val) {
             cache.push(val);
-            if (!min.contains(val)){
+            if (!min.contains(val)) {
                 min.add(val);
             }
 
@@ -41,15 +51,17 @@ public class MinStack_155 {
 
         public void pop() {
             Integer pop = cache.pop();
+            System.out.println("pop:" + pop);
+            System.out.println(cache);
             min.remove(pop);
         }
 
         public int top() {
-            return cache.getLast();
+            return cache.getFirst();
         }
 
         public int getMin() {
-            if (!min.isEmpty()){
+            if (!min.isEmpty()) {
                 Integer poll = min.poll();
                 min.add(poll);
                 return poll;
