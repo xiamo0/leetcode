@@ -1,40 +1,44 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Huawei {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
         int[] nums = {10, 10, 10, 10, 10};
-//        System.out.println(maxResult(nums, 5));
+        System.out.println(maxResult(nums, 5));
         System.out.println(maxResult2(nums, 5));
 
         int[] nums1 = {1, 10, 3, 3, 3};
         System.out.println(maxResult2(nums1, 3));
 
-
     }
+
     public static long maxResult2(int[] nums, int k) {
-        long sum=0;
-    
-        Queue<List<Integer>> queue=new PriorityQueue<>((a, b)->{
+        long sum = 0;
+
+        Queue<List<Integer>> queue = new PriorityQueue<>((a, b) -> {
             int i = a.get(0).intValue();
             int j = b.get(0).intValue();
-           return j-i;
+            return j - i;
         });
-        for(int i=0;i<nums.length;i++){
-            List<Integer> list=new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            List<Integer> list = new ArrayList<>();
             list.add(nums[i]);
             list.add(i);
             queue.add(list);
         }
-        while(k>0){
+        while (k > 0) {
             k--;
             List<Integer> peek = queue.poll();
-            int tempValue=peek.get(0);
-            int tempIndex=peek.get(1);
-            sum+=tempValue;
-            int newValue=tempValue/3;
-            if (newValue*3<tempValue){
-                newValue=newValue+1;
+            int tempValue = peek.get(0);
+            int tempIndex = peek.get(1);
+            sum += tempValue;
+            int newValue = tempValue / 3;
+            if (newValue * 3 < tempValue) {
+                newValue = newValue + 1;
             }
             List<Integer> integers = new ArrayList<>();
             integers.add(newValue);
