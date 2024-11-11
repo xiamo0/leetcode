@@ -1,5 +1,7 @@
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -12,6 +14,25 @@ public class LongestConsecutiveSequence_128 {
         // int[] arr = {9,1,4,7,3,-1,0,5,8,-1,6};
         int[] arr = {1, 2, 0, 1};
         System.out.println(sequence128.longestConsecutive(arr));
+    }
+
+    public int longestConsecutive2(int[] nums) {
+
+        Set<Integer> set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
+        Iterator<Integer> iterator = set.iterator();
+
+        int longest = 0;
+        while (iterator.hasNext()) {
+            Integer next = iterator.next();
+            int curLong = 0;
+            while (set.contains(next++)) {
+                curLong++;
+            }
+            if (curLong > longest) {
+                longest = curLong;
+            }
+        }
+        return longest;
     }
 
     public static int[] sortNum(int[] nums) {
@@ -35,7 +56,7 @@ public class LongestConsecutiveSequence_128 {
             int tempMax = 1;
             for (int j = i + 1; j < collect.size(); j++) {
                 int cur = collect.get(j);
-                int pre =collect.get(j-1);
+                int pre = collect.get(j - 1);
                 if (cur - pre == 1) {
                     tempMax += 1;
                 } else if (cur == pre) {
