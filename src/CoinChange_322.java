@@ -8,50 +8,30 @@ public class CoinChange_322 {
     public static void main(String[] args) {
         CoinChange_322 change322 = new CoinChange_322();
         int[] coins = {186, 419, 83, 408};
-        coins = new int[]{186, 419, 83, 408};
-//        System.out.println(change322.coinChange(coins, 6249));
-        System.out.println(Math.ceilDiv(10, 3));
+        coins = new int[]{2};
+        System.out.println(change322.coinChange(coins, 3));
+//        System.out.println(Math.ceilDiv(10, 3));
     }
 
     public int coinChange(int[] coins, int amount) {
 
-        Arrays.sort(coins);
-        int copyAmount = amount;
-
-        int minCount = Math.ceilDiv(amount, coins[coins.length - 1]);
-        int maxCount = Math.ceilDiv(amount, coins[0]);
-        int finalCount = minCount;
-        int curCoinIndex = coins.length - 1;
-        for (int curCount = minCount; curCount <= maxCount; curCount++) {
-            copyAmount = amount;
-            if (curCount == minCount) {
-                boolean b = copyAmount - curCount * coins[curCoinIndex] == 0;
-                if (b) {
-                    return curCount;
+        if (amount==0){
+            return 0;
+        }
+        //凑足 金额 i  所需金币数量为 dp[i]
+        int[] dp = new int[amount + 1];
+        dp[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            dp[i] = amount+1;
+            for (int j = 0; j < coins.length; j++) {
+                if (i - coins[j] >= 0) {
+                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
                 }
             }
-            if (curCount == maxCount) {
-                boolean b = copyAmount - curCount * coins[0] == 0;
-                if (b) {
-                    return curCount;
-                }
-            }
-            int subCount = curCount - minCount;
-            while (subCount!=0){
-                int tempMinCount=minCount-1;
-                int tempMinCountIndex=coins.length-1;
-                copyAmount=copyAmount-tempMinCount*coins[tempMinCountIndex];
-
-            }
-
-
-
-
-
-
         }
 
 
-        return finalCount;
+        return dp[amount] != (amount+1) ? dp[amount] : -1;
+
     }
 }
