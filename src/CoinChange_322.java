@@ -5,6 +5,7 @@ import java.util.Arrays;
  */
 public class CoinChange_322 {
 
+
     public static void main(String[] args) {
         CoinChange_322 change322 = new CoinChange_322();
         int[] coins = {186, 419, 83, 408};
