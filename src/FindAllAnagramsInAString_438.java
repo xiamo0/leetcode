@@ -11,31 +11,57 @@ public class FindAllAnagramsInAString_438 {
 
     public static void main(String[] args) {
         FindAllAnagramsInAString_438 aString438 = new FindAllAnagramsInAString_438();
-        String s="cbaebabacd";
-        String p="abc";
+        String s="abab";
+        String p="ab";
         System.out.println(aString438.findAnagrams(s,p));
 
     }
     public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> r=new ArrayList<>();
+        if (s.length()<p.length()){
+            return r;
+        }
+        int[]sCharCount=new int[26];
+        int[]pCharCount=new int[26];
+        for (int i = 0; i <p.length() ; i++) {
+            sCharCount[s.charAt(i)-'a']+=1;
+            pCharCount[p.charAt(i)-'a']+=1;
+        }
+        if (Arrays.equals(sCharCount,pCharCount)){
+            r.add(0);
+        }
+
+        for (int i = 1; i <= s.length()-p.length(); i++) {
+            sCharCount=new int[26];
+            for (int j = 0; j < p.length(); j++) {
+                sCharCount[ s.charAt(i+j)-'a']+=1;
+            }
+            if (Arrays.equals(sCharCount,pCharCount)){
+                r.add(i);
+            }
+        }
+        return r;
+
+    }
+    public List<Integer> findAnagrams2(String s, String p) {
         List<Integer> r = new ArrayList<>();
-        String longStr = s;
-        String shortStr = p;
-        if (longStr.length() < shortStr.length()) {
+        if (s.length() < p.length()) {
             return r;
         }
-        if (longStr.equals(shortStr)){
+        if (s.equals(p)){
             return r;
         }
-        for (int i = 0; i < longStr.length(); i++) {
-            List<String> list = Arrays.stream(shortStr.split("")).collect(Collectors.toList());
+        for (int i = 0; i < s.length(); i++) {
+
+            List<String> list = Arrays.stream(p.split("")).collect(Collectors.toList());
             int interval=0;
-            for (int i1 = 0; i1 < shortStr.length(); i1++) {
+            for (int i1 = 0; i1 < p.length(); i1++) {
                 int curIndex=i + interval;
                 interval+=1;
-                if (curIndex>=longStr.length()){
+                if (curIndex>= s.length()){
                     break;
                 }
-                char c = longStr.charAt(curIndex);
+                char c = s.charAt(curIndex);
                 list.remove(String.valueOf(c));
             }
             if (list.isEmpty()){
