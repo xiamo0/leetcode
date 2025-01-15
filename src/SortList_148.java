@@ -1,77 +1,74 @@
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
-
 /**
  * https://leetcode.cn/problems/sort-list/description/?envType=problem-list-v2&envId=2cktkvj
  */
 public class SortList_148 {
 
     public static void main(String[] args) {
-        ListNode t0=new ListNode(5);
-        ListNode t1=new ListNode(6);
-        ListNode t2=new ListNode(-1);
-        ListNode t3=new ListNode(2);
+        ListNode1 t0=new ListNode1(5);
+        ListNode1 t1=new ListNode1(6);
+        ListNode1 t2=new ListNode1(-1);
+        ListNode1 t3=new ListNode1(2);
         t0.next=t1;
         t1.next=t2;
         t2.next=t3;
-        ListNode listNode = sortList(t0);
+        ListNode1 listNode = sortList(t0);
         System.out.println(listNode);
 
 
     }
 
-    public static ListNode sortList(ListNode head) {
+    public static ListNode1 sortList(ListNode1 head) {
         if (head == null) {
             return null;
         }
         if (head.next == null) {
             return head;
         }
-        ListNode middle = head;
-        ListNode end = middle.next;
+        ListNode1 middle = head;
+        ListNode1 end = middle.next;
         while (end != null && end.next !=null) {
             middle = middle.next;
             end = end.next.next;
         }
-        ListNode next = middle.next;
+        ListNode1 next = middle.next;
         middle.next = null;
-        ListNode head1 = sortList(head);
-        ListNode head2 = sortList(next);
+        ListNode1 head1 = sortList(head);
+        ListNode1 head2 = sortList(next);
         return mergeTwoLists(head1,head2);
 
     }
 
-    public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    public static ListNode1 mergeTwoLists(ListNode1 l1, ListNode1 l2) {
 
-        ListNode head = new ListNode();
-        ListNode temp = head;
+        ListNode1 head = new ListNode1();
+        ListNode1 temp = head;
         while (l1 != null && l2 != null) {
             int val = l1.val;
             int val2 = l2.val;
             if (val < val2) {
-                temp.next = new ListNode(val);
+                temp.next = new ListNode1(val);
                 l1 = l1.next;
                 temp = temp.next;
             } else if (val2 < val) {
-                temp.next = new ListNode(val2);
+                temp.next = new ListNode1(val2);
                 l2 = l2.next;
                 temp = temp.next;
             } else if (val == val2) {
-                temp.next = new ListNode(val);
+                temp.next = new ListNode1(val);
                 temp=temp.next;
-                temp.next = new ListNode(val2);
+                temp.next = new ListNode1(val2);
                 temp=temp.next;
                 l1 = l1.next;
                 l2 = l2.next;
             }
         }
         while (l1 != null) {
-            temp.next= new ListNode(l1.val);
+            temp.next= new ListNode1(l1.val);
             l1 = l1.next;
             temp = temp.next;
         }
         while (l2 != null) {
-            temp.next = new ListNode(l2.val);
+            temp.next = new ListNode1(l2.val);
             temp = temp.next;
             l2 = l2.next;
 
@@ -84,7 +81,7 @@ public class SortList_148 {
 
 class ListNode {
     int val;
-    ListNode next;
+    ListNode1 next;
 
     ListNode() {
     }
@@ -93,7 +90,7 @@ class ListNode {
         this.val = val;
     }
 
-    ListNode(int val, ListNode next) {
+    ListNode(int val, ListNode1 next) {
         this.val = val;
         this.next = next;
     }
