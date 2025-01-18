@@ -19,7 +19,7 @@ public class AddTwoNumbers {
         ListNode1 l222 = new ListNode1();
         l222.val = 4;
         l22.next = l222;
-        addTwoNumbers(l1, l2);
+        System.out.println(addTwoNumbers(l1, l2));
     }
 
     public static ListNode1 addTwoNumbers(ListNode1 l1, ListNode1 l2) {
@@ -83,5 +83,13 @@ class ListNode1 {
     ListNode1(int val, ListNode1 next) {
         this.val = val;
         this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        return "ListNode1{" +
+                "val=" + val +
+                ", next=" + next +
+                '}';
     }
 }
