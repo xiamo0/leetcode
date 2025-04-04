@@ -21,20 +21,6 @@ public class LongestPalindromicSubstring {
         boolean[][] dp = new boolean[length][length];
         int start = 0;
         int maxLength = 1;
-        /*for (int i = 0; i < length; i++) {
-            dp[i][i] = true;
-            for (int j = i + 1; j < length; j++) {
-                if (s.charAt(i) == s.charAt(j)) {
-                    if ((j == (i + 1)) || (dp[i + 1][j - 1])) {
-                        dp[i][j] = true;
-                        if (j - i + 1 > maxLength) {
-                            start = i;
-                            maxLength = j - i + 1;
-                        }
-                    }
-                }
-            }
-        }*/
         for (int i = length - 1; i >= 0; i--) {
             dp[i][i] = true;
             for (int j = i + 1; j < length; j++) {
