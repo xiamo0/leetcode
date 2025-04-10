@@ -13,6 +13,22 @@ public class MaximumProductSubarray {
 
     public int maxProduct(int[] nums) {
         int length = nums.length;
+        int[] maxValue = new int[length];
+        int[] minValue = new int[length];
+        maxValue[0] = nums[0];
+        minValue[0] = nums[0];
+        int result = maxValue[0];
+        for (int i = 1; i < length; i++) {
+            int curValue = nums[i];
+            maxValue[i] = Math.max(curValue, Math.max(curValue * maxValue[i - 1], curValue * minValue[i - 1]));
+            minValue[i] = Math.min(curValue, Math.min(curValue * maxValue[i - 1], curValue * minValue[i - 1]));
+            result = Math.max(result, maxValue[i]);
+        }
+        return result;
+    }
+
+    public int maxProduct1(int[] nums) {
+        int length = nums.length;
         int[][] dp = new int[length][length];
         int max = nums[0];
         for (int i = 0; i < length; i++) {
