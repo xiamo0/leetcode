@@ -11,16 +11,38 @@ public class NumberOfDigitOne {
 
     }
 
-    public int countDigitOne(int n) {
 
+    char[] charArray = null;
+    int count = 0;
+    public int countDigitOne(int n) {
+        charArray = String.valueOf(n).toCharArray();
+
+        return 0;
+
+    }
+    void dfs(int pos){
+        if (pos == charArray.length){
+            return;
+        }
+        int i = charArray[pos] - '0';
+        for (int j = 0; j < i; j++) {
+
+        }
+
+    }
+
+    public int countDigitOne1(int n) {
         int result = 0;
         for (int i = 1; i <= n; i++) {
-            if (("" + i).contains("1")) {
-                result++;
+            String s = "" + i;
+            for (char c : s.toCharArray()) {
+                if (c == '1') {
+                    result++;
+                }
             }
         }
         return result;
     }
 
-    static
+
 }
