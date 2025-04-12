@@ -22,5 +22,6 @@ p.png](routemap.png)
 | [杨辉三角2](https://leetcode.cn/problems/pascals-triangle-ii/description/?envType=problem-list-v2&envId=dynamic-programming)                                  |    动态规划    |       [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/PascalsTriangle2.java)        |   简单    |
 | [买卖股票的最佳时机 2](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/?envType=problem-list-v2&envId=dynamic-programming)             |    动态规划    |  [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/BestTimeToBuyAndSellStock2.java)   |   中等    |
 | [买卖股票的最佳时机](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description/?envType=problem-list-v2&envId=dynamic-programming)               |    动态规划    |   [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/BestTimeToBuyAndSellStock.java)   |   简单    |
+| [比特位计数](https://leetcode.cn/problems/counting-bits/description/?envType=problem-list-v2&envId=dynamic-programming)               |    动态规划    |         [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/CountingBits.java)          |   简单    |
 
 
