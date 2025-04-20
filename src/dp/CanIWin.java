@@ -15,19 +15,10 @@ public class CanIWin {
     }
 
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
-        if (maxChoosableInteger >= desiredTotal) {
-            return true;
+        if ((1 + maxChoosableInteger) * maxChoosableInteger / 2 < desiredTotal) {
+            return false;
         }
-        int[] dp = new int[desiredTotal+1];
-        Arrays.fill(dp,0,maxChoosableInteger+1,1);
 
-        for (int i = maxChoosableInteger+1; i < dp.length; i++) {
-            if (dp[i-1]==1){
-                dp[i]=1;
-            }else{
-                dp[i]
-            }
-        }
         return false;
     }
 
