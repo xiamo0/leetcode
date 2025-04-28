@@ -30,6 +30,7 @@ p.png](routemap.png)
 | [环绕字符串中唯一的子字符串](https://leetcode.cn/problems/unique-substrings-in-wraparound-string/description/?envType=problem-list-v2&envId=dynamic-programming) |    动态规划    | [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/UniqueSubstringsInWraparoundString.java) | 中等   todo |
 | [判断子序列](https://leetcode.cn/problems/IsSubsequence/description/?envType=problem-list-v2&envId=dynamic-programming)                                  |    动态规划    |           [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/IsSubsequence.java)            | 简单   |
 | [斐波那契数](https://leetcode.cn/problems/fibonacci-number/description/?envType=problem-list-v2&envId=dynamic-programming)                               |    动态规划    |          [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/FibonacciNumber.java)           | 简单   |
-| [使用最小花费爬楼梯](https://leetcode.cn/problems/MinCostClimbingStairs/description/?envType=problem-list-v2&envId=dynamic-programming)                               |    动态规划    |          [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/MinCostClimbingStairs.java)           | 简单   |
+| [使用最小花费爬楼梯](https://leetcode.cn/problems/MinCostClimbingStairs/description/?envType=problem-list-v2&envId=dynamic-programming)                      |    动态规划    |          [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/MinCostClimbingStairs.java)           | 简单   |
+| [除数博弈](https://leetcode.cn/problems/DivisorGame/description/?envType=problem-list-v2&envId=dynamic-programming)                                     |    动态规划    |          [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/DivisorGame.java)           | 简单   |
 
 

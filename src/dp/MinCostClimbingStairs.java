@@ -8,29 +8,24 @@ import java.util.Arrays;
 public class MinCostClimbingStairs {
 
     public static void main(String[] args) {
-        int[] cost={
-                10,15,20
+        int[] cost = {
+                10, 15, 20
         };
         System.out.println(new MinCostClimbingStairs().minCostClimbingStairs(cost));
     }
+
     public int minCostClimbingStairs(int[] cost) {
+        int length = cost.length;
+        int[] dp = new int[length + 1];
+        // 坐标为 n 楼顶就是 n+1
 
-        //当楼顶为i 时 的最低花费 dp[i]
-        //dp[i] =min(dp[i-1],dp[i-2])
-        int[]dp=new int[cost.length];
-        Arrays.fill(dp,Integer.MAX_VALUE);
-        dp[0]=cost[0];
-        for (int i = 1; i <dp.length ; i++) {
-            if (i==1){
-                //0+2>1
-                dp[i]=Math.min(dp[0],cost[i]);
+        for (int i = 2; i < dp.length; i++) {
+            if (i <= 1) {
+                dp[i] = 0;
             }
-            if (i==2){
-                dp[i]=
-
-            }
-
+            dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
         }
+        return dp[length];
 
     }
 
