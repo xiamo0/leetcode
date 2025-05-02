@@ -33,5 +33,6 @@ p.png](routemap.png)
 | [使用最小花费爬楼梯](https://leetcode.cn/problems/MinCostClimbingStairs/description/?envType=problem-list-v2&envId=dynamic-programming)                      |    动态规划    |       [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/MinCostClimbingStairs.java)        |    简单     |
 | [除数博弈](https://leetcode.cn/problems/DivisorGame/description/?envType=problem-list-v2&envId=dynamic-programming)                                     |    动态规划    |            [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/DivisorGame.java)             |    简单     |
 | [分隔数组以得到最大和](https://leetcode.cn/problems/partition-array-for-maximum-sum/description/?envType=problem-list-v2&envId=dynamic-programming)                                     |    动态规划    |    [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/PartitionArrayForMaximumSum.java)     |    中等     |
+| [填充书架](https://leetcode.cn/problems/filling-bookcase-shelves/description/?envType=problem-list-v2&envId=dynamic-programming)                                     |    动态规划    |       [Java1](https://github.com/xiamo0/leetcodejava/blob/main/src/dp/FillingBookcaseShelves.java)       |    中等     |
 
 
