@@ -98,5 +98,37 @@ public class SmallestSufficientTeam {
         return dp[(1 << n) - 1].stream().mapToInt(i -> i).toArray();
     }
 
+    public int[] smallestSufficientTeam2(String[] req_skills, List<List<String>> people) {
+        int n = req_skills.length, m = people.size();
+        HashMap<String, Integer> skill_index = new HashMap<>();
+        for (int i = 0; i < n; ++i) {
+            skill_index.put(req_skills[i], i);
+        }
+        int[]peopleSkills=new int[m];
+        for (int i = 0; i < m; i++) {
+            int curSkill=0;
+            for (String skill : people.get(i)) {
+                curSkill |=1<<skill_index.get(skill);
+            }
+            peopleSkills[i]=curSkill;
+        }
+        List<Integer>[] dp = new List[1 << n];
+        dp[0] = new ArrayList<>();
+        for (int i = 0; i < m; ++i) {
+            int peopleSkill = peopleSkills[i];
+            for (int prev = 0; prev < dp.length; ++prev) {
+                if (dp[prev] == null) {
+                    continue;
+                }
+                int comb = prev | peopleSkill;
+                if (dp[comb] == null || dp[prev].size() + 1 < dp[comb].size()) {
+                    dp[comb] = new ArrayList<>(dp[prev]);
+                    dp[comb].add(i);
+                }
+            }
+        }
+        return dp[(1 << n) - 1].stream().mapToInt(i -> i).toArray();
+    }
+
 
 }

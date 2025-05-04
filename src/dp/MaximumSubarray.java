@@ -1,5 +1,7 @@
 package dp;
 
+import java.util.Arrays;
+
 /**
  * https://leetcode.cn/problems/maximum-subarray/description/?envType=problem-list-v2&envId=dynamic-programming
  */
@@ -13,14 +15,25 @@ public class MaximumSubarray {
 
     }
 
-    public int maxSubArray(int[] nums) {
+    static int calcPreMax(int[] nums, int begin, int end) {
+        int sum = 0;
+        for (int i = begin + 1; i <= end; i++) {
+            sum += nums[i];
+        }
+        return sum;
 
-        //前1个元素的最大连续子数组 的和 为 dp[0]=nums[0]
-        //前2个元素的最大连续子数组 的和 为 dp[1]=max(dp[0],前两个元素的和，第二个元素)
-        //前3个元素的最大连续子数组 的和 为 dp[2]=max(dp[1],dp[1]+第三个元素，第3个元素)
-        //前4个元素的最大连续子数组 的和 为 dp[3]=max(dp[2],dp[2]+第4个元素，第4个元素)
-        //前5个元素的最大连续子数组 的和 为 dp[4]=max(dp[2],dp[2]+第3个元素+第4个元素，第3个元素+第4个元素,第4个元素)
-        return 0;
+    }
+
+    public int maxSubArray(int[] nums) {
+//        curSum 表示以当前位置结尾的最大子数组和。
+//        maxSum 表示到当前为止的最大子数组和。
+        int curSum = nums[0];
+        int maxSum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            curSum = Math.max(nums[i], curSum + nums[i]);
+            maxSum = Math.max(curSum, maxSum);
+        }
+        return maxSum;
     }
 
     public int maxSubArray1(int[] nums) {
