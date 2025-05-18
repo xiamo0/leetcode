@@ -59,7 +59,6 @@ public class FindMinimumInRotatedSortedArray {
             } else {
                 right = midIndex;
             }
-
         }
         return nums[left];
     }
