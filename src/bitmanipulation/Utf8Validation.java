@@ -76,28 +76,28 @@ public class Utf8Validation {
                 }
                 continue;
             }
-            if (first.startsWith("1110")){
-                String second=queue.poll();
-                if (second ==null ||!second.startsWith("10")){
+            if (first.startsWith("1110")) {
+                String second = queue.poll();
+                if (second == null || !second.startsWith("10")) {
                     return false;
                 }
-                String third=queue.poll();
-                if (third==null || !third.startsWith("10")){
+                String third = queue.poll();
+                if (third == null || !third.startsWith("10")) {
                     return false;
                 }
                 continue;
             }
-            if (first.startsWith("11110")){
-                String second=queue.poll();
-                if (second ==null ||!second.startsWith("10")){
+            if (first.startsWith("11110")) {
+                String second = queue.poll();
+                if (second == null || !second.startsWith("10")) {
                     return false;
                 }
-                String third=queue.poll();
-                if (third==null || !third.startsWith("10")){
+                String third = queue.poll();
+                if (third == null || !third.startsWith("10")) {
                     return false;
                 }
-                String forth=queue.poll();
-                if (forth==null || !forth.startsWith("10")){
+                String forth = queue.poll();
+                if (forth == null || !forth.startsWith("10")) {
                     return false;
                 }
                 continue;
@@ -106,4 +106,5 @@ public class Utf8Validation {
         }
         return true;
     }
+
 }
