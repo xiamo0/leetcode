@@ -29,15 +29,17 @@ https://leetcode.cn/problems/bitwise-and-of-numbers-range/description/?envType=p
 public class BitwiseAndOfNumbersRange {
 
     public static void main(String[] args) {
-        new BitwiseAndOfNumbersRange().rangeBitwiseAnd(1,2147483647);
+        new BitwiseAndOfNumbersRange().rangeBitwiseAnd(1, 2147483647);
     }
-    public int rangeBitwiseAnd(int left, int right) {
 
-        int result=left;
-        for (int i = left+1; i <right ; i++) {
-            result=result&i;
+    public int rangeBitwiseAnd(int left, int right) {
+        int shift = 0;
+        while (left < right) {
+            left = left >> 1;
+            right = right >> 1;
+            shift++;
         }
-        return result;
+        return left << shift;
     }
 
 }
