@@ -38,9 +38,10 @@ public class IntegerReplacement {
 
     public static void main(String[] args) {
         System.out.println(new IntegerReplacement()
-                .integerReplacement1(1234));
+                .integerReplacement1(3));
 
     }
+
 
     public int integerReplacement1(int n) {
 
@@ -69,7 +70,9 @@ public class IntegerReplacement {
                 count = count + integerReplacement(n / 2);
             } else {
                 count = count + 1;
-                count = count + integerReplacement(n + 1);
+                int tempCount1 = integerReplacement(n + 1);
+                int tempCount2 = integerReplacement(n - 1);
+                count += Math.min(tempCount1, tempCount2);
             }
         }
         return count;
