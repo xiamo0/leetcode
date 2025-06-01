@@ -81,7 +81,7 @@ public class MatchsticksToSquare {
         }
         return true;
     }
-    
+
     public boolean makesquare1(int[] matchsticks) {
         int sum = Arrays.stream(matchsticks).sum();
         if (sum % 4 != 0) return false;
@@ -110,6 +110,5 @@ public class MatchsticksToSquare {
         }
         return false;
     }
-}
 
 }
