@@ -38,7 +38,7 @@ preorder 由以逗号 “，” 分隔的 [0,100] 范围内的整数和 “#” 
 
  */
 public class VerifyPreorderSerializationOfABinaryTree {
-    
+
     /**
      * Verifies whether the given preorder string is a valid serialization of a binary tree.
      * <p>
