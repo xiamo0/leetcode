@@ -46,7 +46,9 @@ mod tests {
 
     #[test]
     fn test() {
-        let root = Some(Rc::new(RefCell::new(TreeNode::new(1))));
-        assert_eq!(Solution::min_depth(root), 1);
+
+        let left = Some(Rc::new(RefCell::new(TreeNode::new(2))));
+        let root = Some(Rc::new(RefCell::new(TreeNode{val: 1, left: left, right: None})));
+        assert_eq!(Solution::min_depth(root), 3);
     }
 }
