@@ -1,5 +1,4 @@
 use std::cell::RefCell;
-use std::cmp::min;
 use std::rc::Rc;
 
 struct Solution {}
@@ -47,11 +46,7 @@ mod tests {
 
     #[test]
     fn test() {
-        let root = Some(Rc::new(RefCell::new(TreeNode {
-            val: 1,
-            left: None,
-            right: None,
-        })));
+        let root = Some(Rc::new(RefCell::new(TreeNode::new(1))));
         assert_eq!(Solution::min_depth(root), 1);
     }
 }
