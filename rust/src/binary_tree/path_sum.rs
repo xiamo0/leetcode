@@ -16,21 +16,21 @@ impl TreeNode {
         }
     }
 }
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 struct Solution;
 impl Solution {
-
     pub fn has_path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> bool {
-        let Some(node)=root else{
+        let Some(node) = root else {
             return false;
         };
-        let node=node.borrow();
-        let remain=target_sum-node.val;
+        let node = node.borrow();
+        let remain = target_sum - node.val;
         if node.left.is_none() && node.right.is_none() {
-            return remain==0;
+            return remain == 0;
         }
-       return  Self::has_path_sum(node.left.clone(), remain+1) ||Self::has_path_sum(node.right.clone(), remain+1)
+        return Self::has_path_sum(node.left.clone(), remain)
+            || Self::has_path_sum(node.right.clone(), remain);
     }
     /*pub fn has_path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> bool {
         if root.is_none() {
@@ -58,14 +58,18 @@ impl Solution {
 }
 #[cfg(test)]
 mod tests {
+    use crate::binary_tree::path_sum::{Solution, TreeNode};
     use std::cell::RefCell;
     use std::rc::Rc;
-    use crate::binary_tree::path_sum::{Solution, TreeNode};
 
     #[test]
     fn binary_tree_path_sum_test() {
         let left = Some(Rc::new(RefCell::new(TreeNode::new(2))));
-        let root = Some(Rc::new(RefCell::new(TreeNode { val: 1, left: left, right: None })));
+        let root = Some(Rc::new(RefCell::new(TreeNode {
+            val: 1,
+            left: left,
+            right: None,
+        })));
         let sum = Solution::has_path_sum(root, 3);
         assert_eq!(true, sum);
     }
