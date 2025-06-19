@@ -25,14 +25,27 @@ public class BinaryTreePaths {
 
     }
 
+    List<List<Integer>> bfs(TreeNode node) {
+        ArrayList<LinkedList<Integer>> result = new ArrayList<>();
+        LinkedList<TreeNode>linkedList=new LinkedList<>();
+        linkedList.addLast(node);
+        while (!linkedList.isEmpty()){
+            TreeNode treeNode = linkedList.removeFirst();
+            int val = treeNode.val;
+            
+
+
+        }
+    }
+
     List<List<Integer>> dfs(TreeNode node) {
         if (node == null) {
             return new ArrayList<>();
         }
-        List<List<Integer>>result=new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
 
         List<List<Integer>> left = dfs(node.left);
-        if (!left.isEmpty()){
+        if (!left.isEmpty()) {
             for (List<Integer> list : left) {
                 List<Integer> temp = new ArrayList<>();
                 temp.add(node.val);
@@ -41,7 +54,7 @@ public class BinaryTreePaths {
             }
         }
         List<List<Integer>> right = dfs(node.right);
-        if (!right.isEmpty()){
+        if (!right.isEmpty()) {
             for (List<Integer> list : right) {
                 List<Integer> temp = new ArrayList<>();
                 temp.add(node.val);
@@ -49,7 +62,7 @@ public class BinaryTreePaths {
                 result.add(temp);
             }
         }
-        if (result.isEmpty()){
+        if (result.isEmpty()) {
             List<Integer> temp = new ArrayList<>();
             temp.add(node.val);
             result.add(temp);
