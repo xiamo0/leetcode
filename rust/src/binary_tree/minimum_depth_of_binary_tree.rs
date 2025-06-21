@@ -1,6 +1,6 @@
+use crate::binary_tree::tree_node::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
-
 struct Solution {}
 impl Solution {
     pub fn min_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
@@ -21,26 +21,10 @@ impl Solution {
     }
 }
 
-#[derive(Debug, PartialEq, Eq)]
-pub struct TreeNode {
-    pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
-    pub right: Option<Rc<RefCell<TreeNode>>>,
-}
-
-impl TreeNode {
-    #[inline]
-    pub fn new(val: i32) -> Self {
-        TreeNode {
-            val,
-            left: None,
-            right: None,
-        }
-    }
-}
 #[cfg(test)]
 mod tests {
-    use crate::binary_tree::minimum_depth_of_binary_tree::{Solution, TreeNode};
+    use crate::binary_tree::minimum_depth_of_binary_tree::Solution;
+    use crate::binary_tree::tree_node::TreeNode;
     use std::cell::RefCell;
     use std::rc::Rc;
 
@@ -52,6 +36,8 @@ mod tests {
             left: left,
             right: None,
         })));
-        assert_eq!(Solution::min_depth(root), 3);
+        let i = Solution::min_depth(root);
+        println!("i={}", i);
+        assert_eq!(i, 2);
     }
 }

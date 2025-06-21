@@ -22,27 +22,5 @@ public class MinimumDepthOfBinaryTree {
             return minDepth((root.left)) + 1;
         }
         return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
-
-
-    }
-
-
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }

@@ -1,6 +1,8 @@
+use crate::binary_tree::tree_node::TreeNode;
 use std::cell::RefCell;
 use std::collections::LinkedList;
 use std::rc::Rc;
+
 pub struct Solution {}
 impl Solution {
     fn decorate_record(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
@@ -26,14 +28,6 @@ impl Solution {
     }
 }
 
-#[derive(Debug, PartialEq, Eq)]
-struct TreeNode {
-    pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
-    pub right: Option<Rc<RefCell<TreeNode>>>,
-}
-
-impl TreeNode {}
 #[cfg(test)]
 mod tests {
     use crate::binary_tree::cong_shang_dao_xia_da_yin_er_cha_shu_lcof::{Solution, TreeNode};
