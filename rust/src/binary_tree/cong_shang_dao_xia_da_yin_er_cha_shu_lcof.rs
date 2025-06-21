@@ -3,7 +3,7 @@ use std::cell::RefCell;
 use std::collections::LinkedList;
 use std::rc::Rc;
 
-pub struct Solution {}
+struct Solution {}
 impl Solution {
     fn decorate_record(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
         let mut list = LinkedList::new();

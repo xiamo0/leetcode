@@ -10,7 +10,6 @@ impl Solution {
         let mut min = i32::MAX;
         for i in 1..vec.len() {
             let diff = (vec[i] - vec[i - 1]).abs();
-
             min = std::cmp::min(min, diff);
         }
         min
@@ -45,7 +44,6 @@ mod tests {
             right: None,
         })));
         let min = Solution::get_minimum_difference(tree);
-        format!("{}", min);
         assert_eq!(1, min);
     }
 }
