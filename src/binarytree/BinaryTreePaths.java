@@ -3,6 +3,7 @@ package binarytree;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 /*
@@ -25,17 +26,31 @@ public class BinaryTreePaths {
 
     }
 
-    List<List<Integer>> bfs(TreeNode node) {
-        ArrayList<LinkedList<Integer>> result = new ArrayList<>();
-        LinkedList<TreeNode>linkedList=new LinkedList<>();
-        linkedList.addLast(node);
-        while (!linkedList.isEmpty()){
-            TreeNode treeNode = linkedList.removeFirst();
-            int val = treeNode.val;
-            
-
-
+    List<String> bfs(TreeNode node) {
+        List<String> r = new ArrayList<>();
+        if (node == null) {
+            return r;
         }
+        Queue<TreeNode> nodeQueue = new LinkedList<>();
+        Queue<String> valueQueue = new LinkedList<>();
+        nodeQueue.offer(node);
+        valueQueue.offer(String.valueOf(node.val));
+        while (!nodeQueue.isEmpty()) {
+            TreeNode head = nodeQueue.poll();
+            String headValue = valueQueue.poll();
+            if (head.left == null & head.right == null) {
+                r.add(headValue);
+            }
+            if (head.left != null) {
+                nodeQueue.offer(head.left);
+                valueQueue.offer(headValue + "->" + String.valueOf(head.left.val));
+            }
+            if (head.right != null) {
+                nodeQueue.offer(head.right);
+                valueQueue.offer(headValue + "->" + String.valueOf(head.right.val));
+            }
+        }
+        return r;
     }
 
     List<List<Integer>> dfs(TreeNode node) {
