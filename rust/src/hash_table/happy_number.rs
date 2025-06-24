@@ -1,5 +1,5 @@
-use std::collections::{HashSet};
 use super::Solution;
+use std::collections::HashSet;
 impl Solution {
     pub fn is_happy(n: i32) -> bool {
         let mut i = n;
