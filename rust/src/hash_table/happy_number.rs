@@ -1,24 +1,16 @@
-use std::collections::HashMap;
+use std::collections::{HashSet};
 use super::Solution;
 impl Solution {
     pub fn is_happy(n: i32) -> bool {
-        if n == 1 {
-            return true;
-        }
-        let cache = HashMap::new();
-
-        let count = 0;
-        while count < i32::MAX {
-            let i = Self::sum(n);
-            if i==1 {
+        let mut i = n;
+        let mut cache = HashSet::new();
+        while i != 1 && !cache.contains(&i) {
+            cache.insert(i);
+            i = Self::sum(i);
+            if i == 1 {
                 return true;
-            }else {
-                n=i;
             }
-
-
         }
-
         false
     }
     fn sum(n: i32) -> i32 {
