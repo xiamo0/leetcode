@@ -4,5 +4,6 @@ mod intersection_of_two_arrays;
 mod solution;
 mod two_sum;
 mod valid_anagram;
+mod word_pattern;
 
 pub use solution::Solution;
