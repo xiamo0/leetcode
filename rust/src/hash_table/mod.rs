@@ -7,6 +7,7 @@ mod top_k_frequent_elements;
 mod two_sum;
 mod valid_anagram;
 mod word_pattern;
+mod letter_combinations_of_a_phone_number;
 
 pub use solution::Solution;
 pub use solution::TreeNode;
