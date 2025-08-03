@@ -8,6 +8,7 @@ mod two_sum;
 mod valid_anagram;
 mod word_pattern;
 mod letter_combinations_of_a_phone_number;
+mod longest_substring_without_repeating_characters;
 
 pub use solution::Solution;
 pub use solution::TreeNode;
