@@ -1,5 +1,8 @@
 package concurrency;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * https://leetcode.cn/problems/print-in-order/?envType=problem-list-v2&envId=concurrency
  * 给你一个类：
@@ -24,13 +27,29 @@ package concurrency;
 public class PrintInOrder {
 
 
+    public static void main(String[] args) throws InterruptedException {
+        PrintInOrder printInOrder = new PrintInOrder();
+        Foo foo = printInOrder.new Foo();
+        foo.first(() -> System.out.print("first"));
+        foo.second(() -> System.out.print("second"));
+        foo.third(() -> System.out.print("third"));
+
+    }
+
     class Foo {
+        AtomicInteger atomicInteger;
 
         public Foo() {
-
+            atomicInteger = new AtomicInteger(1);
         }
 
         public void first(Runnable printFirst) throws InterruptedException {
+
+            while (atomicInteger.get() != 1) {
+                // wait
+                TimeUnit.MILLISECONDS.sleep(1);
+            }
+            atomicInteger.addAndGet(1);
 
             // printFirst.run() outputs "first". Do not change or remove this line.
             printFirst.run();
@@ -38,12 +57,22 @@ public class PrintInOrder {
 
         public void second(Runnable printSecond) throws InterruptedException {
 
+            while (atomicInteger.get() != 2) {
+                // wait
+                TimeUnit.MILLISECONDS.sleep(1);
+            }
+            atomicInteger.addAndGet(1);
             // printSecond.run() outputs "second". Do not change or remove this line.
             printSecond.run();
         }
 
         public void third(Runnable printThird) throws InterruptedException {
 
+            while (atomicInteger.get() != 3) {
+                // wait
+                TimeUnit.MILLISECONDS.sleep(1);
+            }
+//            atomicInteger.addAndGet(1);
             // printThird.run() outputs "third". Do not change or remove this line.
             printThird.run();
         }
