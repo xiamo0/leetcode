@@ -2,6 +2,7 @@ package concurrency;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.Semaphore;
 
 /**
  * https://leetcode.cn/problems/building-h2o/?envType=problem-list-v2&envId=concurrency
@@ -38,70 +39,45 @@ import java.util.concurrent.CyclicBarrier;
 public class BuildingH2o {
 
     public static void main(String[] args) throws InterruptedException {
-        H2O h2O = new BuildingH2o().new H2O();
-        new Thread(() -> {
-            try {
-                h2O.hydrogen(() -> System.out.print("H"));
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }).start();
-        new Thread(() -> {
-            try {
-                h2O.hydrogen(() -> System.out.print("H"));
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }).start();
-        new Thread(() -> {
-            try {
-                h2O.oxygen(() -> System.out.print("O"));
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }).start();
-//
-//        h2O.hydrogen(() -> System.out.print("H"));
-//        h2O.hydrogen(() -> System.out.print("H"));
-//        h2O.oxygen(() -> System.out.print("O"));
 
 
     }
 
     class H2O {
 
-        int hCount = 0;
-        int oCount = 0;
-        CyclicBarrier hBarrier = new CyclicBarrier(2,()->{
-            // reset oBarrier
-            hCount=0;
-
+        private final Semaphore semaphoreH = new Semaphore(2);
+        private final Semaphore semaphoreO = new Semaphore(1);
+        private final CyclicBarrier cyclicBarrier = new CyclicBarrier(3, () -> {
+            semaphoreH.release(2);
+            semaphoreO.release(1);
         });
-        CyclicBarrier oBarrier = new CyclicBarrier(1,()->{
-            oCount=0;
-        });
-
 
         public H2O() {
 
         }
 
         public void hydrogen(Runnable releaseHydrogen) throws InterruptedException {
-            if (hCount == 2) {
-                try {
-                    hBarrier.await();
-                } catch (BrokenBarrierException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            hCount++;
+
             // releaseHydrogen.run() outputs "H". Do not change or remove this line.
+            semaphoreH.acquire();
+            try {
+                cyclicBarrier.await();
+            } catch (BrokenBarrierException e) {
+                throw new RuntimeException(e);
+            }
             releaseHydrogen.run();
-
-
         }
 
         public void oxygen(Runnable releaseOxygen) throws InterruptedException {
+
+            // releaseOxygen.run() outputs "O". Do not change or remove this line.
+            semaphoreO.acquire();
+            try {
+                cyclicBarrier.await();
+            } catch (BrokenBarrierException e) {
+                throw new RuntimeException(e);
+            }
+            releaseOxygen.run();
         }
     }
 }
