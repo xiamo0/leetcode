@@ -1,5 +1,7 @@
 package concurrency;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * https://leetcode.cn/problems/the-dining-philosophers/description/?envType=problem-list-v2&envId=concurrency
  * 哲学家进餐
@@ -44,75 +46,19 @@ public class TheDiningPhilosophers {
 
 
     public static void main(String[] args) {
-        DiningPhilosophers diningPhilosophers = new TheDiningPhilosophers().new DiningPhilosophers();
-        new Thread(() -> {
-            try {
-                diningPhilosophers.wantsToEat(0,
-                        () -> System.out.print("pickLeftFork "),
-                        () -> System.out.print("pickRightFork "),
-                        () -> System.out.print("eat "),
-                        () -> System.out.print("putLeftFork "),
-                        () -> System.out.print("putRightFork "));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-        new Thread(() -> {
-            try {
-                diningPhilosophers.wantsToEat(1,
-                        () -> System.out.print("pickLeftFork "),
-                        () -> System.out.print("pickRightFork "),
-                        () -> System.out.print("eat "),
-                        () -> System.out.print("putLeftFork "),
-                        () -> System.out.print("putRightFork "));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-        new Thread(() -> {
-            try {
-                diningPhilosophers.wantsToEat(2,
-                        () -> System.out.print("pickLeftFork "),
-                        () -> System.out.print("pickRightFork "),
-                        () -> System.out.print("eat "),
-                        () -> System.out.print("putLeftFork "),
-                        () -> System.out.print("putRightFork "));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-        new Thread(() -> {
-            try {
-                diningPhilosophers.wantsToEat(3,
-                        () -> System.out.print("pickLeftFork "),
-                        () -> System.out.print("pickRightFork "),
-                        () -> System.out.print("eat "),
-                        () -> System.out.print("putLeftFork "),
-                        () -> System.out.print("putRightFork "));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-        new Thread(() -> {
-            try {
-                diningPhilosophers.wantsToEat(4,
-                        () -> System.out.print("pickLeftFork "),
-                        () -> System.out.print("pickRightFork "),
-                        () -> System.out.print("eat "),
-                        () -> System.out.print("putLeftFork "),
-                        () -> System.out.print("putRightFork "));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
+
 
     }
 
     class DiningPhilosophers {
 
-        private int forkTotalCount = 5;
-        public DiningPhilosophers() {
+        private final ReentrantLock[] forks;
 
+        public DiningPhilosophers() {
+            forks = new ReentrantLock[5];
+            for (int i = 0; i < 5; i++) {
+                forks[i] = new ReentrantLock();
+            }
         }
 
         // call the run() method of any runnable to execute its code
@@ -122,12 +68,35 @@ public class TheDiningPhilosophers {
                                Runnable eat,
                                Runnable putLeftFork,
                                Runnable putRightFork) throws InterruptedException {
-            
 
+            int leftFork = philosopher;
+            int rightFork = (philosopher + 1) % 5;
 
+            if (philosopher == 4) {
+                forks[leftFork].lock();
+                pickLeftFork.run();
+                forks[rightFork].lock();
+                pickRightFork.run();
+            } else {
+                forks[rightFork].lock();
+                pickRightFork.run();
+                forks[leftFork].lock();
+                pickLeftFork.run();
+            }
 
+            eat.run();
 
-
+            if (philosopher == 4) {
+                putRightFork.run();
+                forks[rightFork].unlock();
+                putLeftFork.run();
+                forks[leftFork].unlock();
+            } else {
+                forks[rightFork].unlock();
+                putLeftFork.run();
+                forks[leftFork].unlock();
+                putRightFork.run();
+            }
         }
     }
 }
