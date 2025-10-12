@@ -35,7 +35,7 @@ mod tests {
 
     #[test]
     fn test() {
-        let vec1 = Solution::top_k_frequent(vec![1, 1, 1, 2, 2, 3], 2);
+        let _vec1 = Solution::top_k_frequent(vec![1, 1, 1, 2, 2, 3], 2);
         let vec2 = Solution::top_k_frequent_1(vec![1, 1, 1, 2, 2, 3], 2);
         //  assert_eq!(vec2, vec1);
     }
