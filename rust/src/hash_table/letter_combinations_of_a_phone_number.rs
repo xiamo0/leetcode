@@ -4,7 +4,9 @@ impl Solution {
         if digits.is_empty() {
             return vec![];
         }
-        let digit_to_letters = vec!["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
+        let digit_to_letters = vec![
+            "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz",
+        ];
         let mut vec: Vec<String> = vec!["".to_string()];
         let chars = digits.chars();
         for x in chars {
@@ -24,7 +26,6 @@ impl Solution {
         res
     }
 }
-
 
 #[cfg(test)]
 mod test {

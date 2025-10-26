@@ -16,6 +16,9 @@ mod tests {
 
     #[test]
     fn test_rotate_string() {
-        assert_eq!(Solution::rotate_string("abcde".to_string(), "bcdea".to_string()), true);
+        assert_eq!(
+            Solution::rotate_string("abcde".to_string(), "bcdea".to_string()),
+            true
+        );
     }
 }

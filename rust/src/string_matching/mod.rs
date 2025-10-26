@@ -1,9 +1,9 @@
-mod repeated_substring_pattern;
-mod rotate_string;
 mod camel_match;
 mod check_if_a_word_occurs_as_a_prefix_of_any_word_in_a_sentence;
 mod multi_search_lcci;
 mod repeated_string_match;
+mod repeated_substring_pattern;
+mod rotate_string;
 mod shortest_matching_substring;
 
 struct Solution;

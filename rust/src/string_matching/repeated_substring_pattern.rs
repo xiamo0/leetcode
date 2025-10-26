@@ -15,6 +15,9 @@ mod tests {
 
     #[test]
     fn test_string_matching() {
-        assert_eq!(Solution::repeated_substring_pattern("acac".to_string()), true);
+        assert_eq!(
+            Solution::repeated_substring_pattern("acac".to_string()),
+            true
+        );
     }
 }

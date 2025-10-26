@@ -1,8 +1,7 @@
-use std::fmt::format;
 use super::Solution;
+use std::fmt::format;
 impl Solution {
     pub fn repeated_string_match(a: String, b: String) -> i32 {
-
         let mut r = -1_i32;
         let mut str = "".to_string();
         let max_length = a.len() + b.len();
@@ -16,7 +15,6 @@ impl Solution {
             }
             str = format!("{}{}", str, a);
         }
-        
     }
 }
 #[cfg(test)]
