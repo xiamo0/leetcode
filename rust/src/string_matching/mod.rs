@@ -5,5 +5,7 @@ mod repeated_string_match;
 mod repeated_substring_pattern;
 mod rotate_string;
 mod shortest_matching_substring;
+mod lexicographically_smallest_generated_string;
+mod shortest_palindrome;
 
 struct Solution;

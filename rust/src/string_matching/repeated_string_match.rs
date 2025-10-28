@@ -1,5 +1,4 @@
 use super::Solution;
-use std::fmt::format;
 impl Solution {
     pub fn repeated_string_match(a: String, b: String) -> i32 {
         let mut r = -1_i32;
