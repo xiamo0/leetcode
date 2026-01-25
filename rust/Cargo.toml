@@ -3,5 +3,9 @@ name = "rust"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name="string_matching_in_an_array"
+path="src/string_matching/string_matching_in_an_array.rs"
+
 [dependencies]
 regex = "1.10"

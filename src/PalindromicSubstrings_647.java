@@ -18,7 +18,6 @@ public class PalindromicSubstrings_647 {
                     count++;
                 }
             }
-            System.out.println("-----");
         }
         return count;
 
